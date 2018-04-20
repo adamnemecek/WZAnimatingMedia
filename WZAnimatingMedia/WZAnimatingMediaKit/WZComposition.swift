@@ -13,6 +13,11 @@ class WZComposition {
     
     private(set) var bounds: CGRect!
     private var layerData: WZLayerData!
+    private var startFrame = 0
+    private var endFrame = 0
+    private var frameRate = 0
+    private var timeDuration: TimeInterval = 0
+    private var layerGroup: WZLayerGroupData!
     
     init(json: JSON) {
         parseJSON(json)
@@ -24,6 +29,15 @@ class WZComposition {
         let width = json["w"].intValue
         bounds = CGRect(x: 0, y: 0, width: width, height: height)
         
-        layerData = WZLayerData(json: json["l"])
+        startFrame = json["ip"].intValue
+        endFrame = json["op"].intValue
+        frameRate = json["fr"].intValue
+        
+        if frameRate != 0 {
+            timeDuration = TimeInterval((endFrame - startFrame - 1) / frameRate)
+        }
+        
+        layerGroup = WZLayerGroupData(layersJSON: json["layers"].arrayValue)
+        
     }
 }

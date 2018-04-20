@@ -10,23 +10,53 @@ import SwiftyJSON
 
 class WZKeyframe {
     
-    var time = 0
+    private var time = 0
+    private var isHold = true
+    private var inTangent: CGPoint = .zero
+    private var outTangent: CGPoint = .zero
+    private var spatialOutTangent: CGPoint = .zero
+    private var spatialInTangent: CGPoint = .zero
+    
     var floatValue: CGFloat = 0
     var pointValue: CGPoint = .zero
     var sizeValue: CGSize = .zero
     
-    init(json: JSON) {
-        parseJSON(json)
+    init(tangentJSON: JSON) {
+        parseJSON(tangentJSON)
+    }
+    
+    init(value: JSON) {
+        setupOutput(value)
+    }
+    
+    func remapValue(remapBlock: (CGFloat) -> CGFloat) {
+    
+        floatValue = remapBlock(floatValue)
+        pointValue = CGPoint(x: remapBlock(pointValue.x), y: remapBlock(pointValue.y))
+        sizeValue = CGSize(width: remapBlock(sizeValue.width), height: remapBlock(sizeValue.height))
     }
     
     private func parseJSON(_ json: JSON) {
         
         time = json["t"].intValue
+        inTangent = CGPoint(x: CGFloat(json["i"]["x"].floatValue), y: CGFloat(json["i"]["y"].floatValue))
+        outTangent = CGPoint(x: CGFloat(json["o"]["x"].floatValue), y: CGFloat(json["o"]["y"].floatValue))
+        isHold = json["h"].boolValue
         
-        setupKeyframeData(json["s"])
+        if let values = json["to"].array {
+            spatialOutTangent = pointFrameValueArray(values: values)
+        }
+        
+        if let values = json["ti"].array {
+            spatialInTangent = pointFrameValueArray(values: values)
+        }
+        
+        if json["s"].exists() {
+            setupOutput(json["s"])
+        }
     }
     
-    private func setupKeyframeData(_ json: JSON) {
+    private func setupOutput(_ json: JSON) {
         
         floatValue = CGFloat(json.floatValue)
         
@@ -43,5 +73,17 @@ class WZKeyframe {
 
             }
         }
+    }
+    
+    private func pointFrameValueArray(values: [JSON]) -> CGPoint {
+        
+        var point: CGPoint = .zero
+        
+        if values.count >= 2 {
+            point.x = CGFloat(values[0].floatValue)
+            point.y = CGFloat(values[1].floatValue)
+        }
+        
+        return point
     }
 }

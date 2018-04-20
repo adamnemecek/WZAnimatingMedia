@@ -13,14 +13,55 @@ class WZKeyframeGroup {
     private var keyframes: [WZKeyframe] = []
     
     init(json: JSON) {
-        parseJSON(json)
+        
+        if json["k"].exists() {
+            parseJSON(json["k"])
+        } else {
+            parseJSON(json)
+        }
+    }
+    
+    func remapKeyframe(remapBlock: (CGFloat) -> CGFloat) {
+        
+        keyframes.forEach({ $0.remapValue(remapBlock: remapBlock)})
     }
     
     private func parseJSON(_ json: JSON) {
         
-        for keyframeJSON in json["k"].arrayValue {
+        if let array = json.array, let firstKey = array.first, firstKey["t"].exists() {
+
+            var previousFrame: JSON?
+
+            for keyframe in array {
+                
+                var currentFrame: JSON = [:]
+                
+                currentFrame["t"] = keyframe["t"]
+                
+                if keyframe["s"].exists() {
+                    currentFrame["s"] = keyframe["s"]
+                } else if let previousFrame = previousFrame, previousFrame["e"].exists() {
+                    currentFrame["s"] = previousFrame["e"]
+                }
+                
+                currentFrame["o"] = keyframe["o"]
+                currentFrame["to"] = keyframe["to"]
+                currentFrame["h"] = keyframe["h"]
+                
+                if let previousFrame = previousFrame {
+                    currentFrame["i"] = previousFrame["i"]
+                    currentFrame["ti"] = previousFrame["ti"]
+                }
+                
+                let keyframe = WZKeyframe(tangentJSON: currentFrame)
+                keyframes.append(keyframe)
+                previousFrame = currentFrame
+            }
+        } else {
             
-            keyframes.append(WZKeyframe(json: keyframeJSON))
+            let keyframe = WZKeyframe(value: json)
+            keyframes = [keyframe]
         }
+        
     }
 }
