@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C8BCC1E34980A3DB72C1CD9 /* Pods_WZAnimatingMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */; };
 		CFDB574A20875100001F1715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB574920875100001F1715 /* AppDelegate.swift */; };
 		CFDB574C20875100001F1715 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB574B20875100001F1715 /* ViewController.swift */; };
 		CFDB574F20875100001F1715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFDB574D20875100001F1715 /* Main.storyboard */; };
 		CFDB575120875101001F1715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFDB575020875101001F1715 /* Assets.xcassets */; };
 		CFDB575420875101001F1715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFDB575220875101001F1715 /* LaunchScreen.storyboard */; };
+		CFDB575D20875131001F1715 /* WZAnimatingMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB575C20875131001F1715 /* WZAnimatingMediaView.swift */; };
+		CFDB575F20875894001F1715 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDB575E20875894001F1715 /* test.json */; };
+		CFDB5761208838C8001F1715 /* WZComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB5760208838C8001F1715 /* WZComposition.swift */; };
+		CFDB576320883D29001F1715 /* WZLayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB576220883D29001F1715 /* WZLayerData.swift */; };
+		CFDB5767208841DA001F1715 /* WZTransoform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB5766208841DA001F1715 /* WZTransoform.swift */; };
+		CFDB5769208844E7001F1715 /* WZKeyframeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB5768208844E7001F1715 /* WZKeyframeGroup.swift */; };
+		CFDB576B2088451F001F1715 /* WZKeyframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB576A2088451F001F1715 /* WZKeyframe.swift */; };
+		CFDB57702088824B001F1715 /* WZRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB576F2088824B001F1715 /* WZRenderer.swift */; };
+		CFDB5772208888B8001F1715 /* VertexShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = CFDB5771208888B8001F1715 /* VertexShader.metal */; };
+		CFDB577420888977001F1715 /* BaseInfo.metal in Sources */ = {isa = PBXBuildFile; fileRef = CFDB577320888977001F1715 /* BaseInfo.metal */; };
+		CFDB577620888C02001F1715 /* FragmentShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = CFDB577520888C02001F1715 /* FragmentShader.metal */; };
+		CFDB57782088AD57001F1715 /* WZLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB57772088AD57001F1715 /* WZLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EDB9F84711BDF111E8C1853 /* Pods-WZAnimatingMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WZAnimatingMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia.release.xcconfig"; sourceTree = "<group>"; };
+		4AA553B4355C21DAC7A48F51 /* Pods-WZAnimatingMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WZAnimatingMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia.debug.xcconfig"; sourceTree = "<group>"; };
 		CFDB574620875100001F1715 /* WZAnimatingMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WZAnimatingMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDB574920875100001F1715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFDB574B20875100001F1715 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +37,19 @@
 		CFDB575020875101001F1715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFDB575320875101001F1715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFDB575520875101001F1715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFDB575C20875131001F1715 /* WZAnimatingMediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZAnimatingMediaView.swift; sourceTree = "<group>"; };
+		CFDB575E20875894001F1715 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		CFDB5760208838C8001F1715 /* WZComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZComposition.swift; sourceTree = "<group>"; };
+		CFDB576220883D29001F1715 /* WZLayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZLayerData.swift; sourceTree = "<group>"; };
+		CFDB5766208841DA001F1715 /* WZTransoform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZTransoform.swift; sourceTree = "<group>"; };
+		CFDB5768208844E7001F1715 /* WZKeyframeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZKeyframeGroup.swift; sourceTree = "<group>"; };
+		CFDB576A2088451F001F1715 /* WZKeyframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZKeyframe.swift; sourceTree = "<group>"; };
+		CFDB576F2088824B001F1715 /* WZRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZRenderer.swift; sourceTree = "<group>"; };
+		CFDB5771208888B8001F1715 /* VertexShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = VertexShader.metal; sourceTree = "<group>"; };
+		CFDB577320888977001F1715 /* BaseInfo.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BaseInfo.metal; sourceTree = "<group>"; };
+		CFDB577520888C02001F1715 /* FragmentShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = FragmentShader.metal; sourceTree = "<group>"; };
+		CFDB57772088AD57001F1715 /* WZLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZLayer.swift; sourceTree = "<group>"; };
+		F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WZAnimatingMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C8BCC1E34980A3DB72C1CD9 /* Pods_WZAnimatingMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6B9987D174C64FAF0D52638 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADE3CEE2A9E080DBB34421B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AA553B4355C21DAC7A48F51 /* Pods-WZAnimatingMedia.debug.xcconfig */,
+				2EDB9F84711BDF111E8C1853 /* Pods-WZAnimatingMedia.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CFDB573D20875100001F1715 = {
 			isa = PBXGroup;
 			children = (
 				CFDB574820875100001F1715 /* WZAnimatingMedia */,
 				CFDB574720875100001F1715 /* Products */,
+				ADE3CEE2A9E080DBB34421B8 /* Pods */,
+				A6B9987D174C64FAF0D52638 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +102,34 @@
 		CFDB574820875100001F1715 /* WZAnimatingMedia */ = {
 			isa = PBXGroup;
 			children = (
+				CFDB575B20875125001F1715 /* WZAnimatingMediaKit */,
 				CFDB574920875100001F1715 /* AppDelegate.swift */,
 				CFDB574B20875100001F1715 /* ViewController.swift */,
+				CFDB575E20875894001F1715 /* test.json */,
 				CFDB574D20875100001F1715 /* Main.storyboard */,
 				CFDB575020875101001F1715 /* Assets.xcassets */,
 				CFDB575220875101001F1715 /* LaunchScreen.storyboard */,
 				CFDB575520875101001F1715 /* Info.plist */,
 			);
 			path = WZAnimatingMedia;
+			sourceTree = "<group>";
+		};
+		CFDB575B20875125001F1715 /* WZAnimatingMediaKit */ = {
+			isa = PBXGroup;
+			children = (
+				CFDB575C20875131001F1715 /* WZAnimatingMediaView.swift */,
+				CFDB5760208838C8001F1715 /* WZComposition.swift */,
+				CFDB576220883D29001F1715 /* WZLayerData.swift */,
+				CFDB5766208841DA001F1715 /* WZTransoform.swift */,
+				CFDB5768208844E7001F1715 /* WZKeyframeGroup.swift */,
+				CFDB576A2088451F001F1715 /* WZKeyframe.swift */,
+				CFDB576F2088824B001F1715 /* WZRenderer.swift */,
+				CFDB57772088AD57001F1715 /* WZLayer.swift */,
+				CFDB5771208888B8001F1715 /* VertexShader.metal */,
+				CFDB577520888C02001F1715 /* FragmentShader.metal */,
+				CFDB577320888977001F1715 /* BaseInfo.metal */,
+			);
+			path = WZAnimatingMediaKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFDB575820875101001F1715 /* Build configuration list for PBXNativeTarget "WZAnimatingMedia" */;
 			buildPhases = (
+				E92A7BCFF62C5D86E76B0171 /* [CP] Check Pods Manifest.lock */,
 				CFDB574220875100001F1715 /* Sources */,
 				CFDB574320875100001F1715 /* Frameworks */,
 				CFDB574420875100001F1715 /* Resources */,
+				43D35B246768CE98F879D85B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -90,6 +160,7 @@
 		CFDB573E20875100001F1715 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WA;
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = fanyinan;
@@ -123,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDB575420875101001F1715 /* LaunchScreen.storyboard in Resources */,
+				CFDB575F20875894001F1715 /* test.json in Resources */,
 				CFDB575120875101001F1715 /* Assets.xcassets in Resources */,
 				CFDB574F20875100001F1715 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +202,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		43D35B246768CE98F879D85B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E92A7BCFF62C5D86E76B0171 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WZAnimatingMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CFDB574220875100001F1715 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFDB576B2088451F001F1715 /* WZKeyframe.swift in Sources */,
+				CFDB57782088AD57001F1715 /* WZLayer.swift in Sources */,
+				CFDB576320883D29001F1715 /* WZLayerData.swift in Sources */,
+				CFDB575D20875131001F1715 /* WZAnimatingMediaView.swift in Sources */,
 				CFDB574C20875100001F1715 /* ViewController.swift in Sources */,
+				CFDB5772208888B8001F1715 /* VertexShader.metal in Sources */,
 				CFDB574A20875100001F1715 /* AppDelegate.swift in Sources */,
+				CFDB57702088824B001F1715 /* WZRenderer.swift in Sources */,
+				CFDB577420888977001F1715 /* BaseInfo.metal in Sources */,
+				CFDB577620888C02001F1715 /* FragmentShader.metal in Sources */,
+				CFDB5769208844E7001F1715 /* WZKeyframeGroup.swift in Sources */,
+				CFDB5761208838C8001F1715 /* WZComposition.swift in Sources */,
+				CFDB5767208841DA001F1715 /* WZTransoform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +402,11 @@
 		};
 		CFDB575920875101001F1715 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA553B4355C21DAC7A48F51 /* Pods-WZAnimatingMedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4RQRV7P524;
 				INFOPLIST_FILE = WZAnimatingMedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,9 +421,11 @@
 		};
 		CFDB575A20875101001F1715 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EDB9F84711BDF111E8C1853 /* Pods-WZAnimatingMedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4RQRV7P524;
 				INFOPLIST_FILE = WZAnimatingMedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

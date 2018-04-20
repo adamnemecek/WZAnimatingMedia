@@ -12,7 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let v = WZAnimatingMediaView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.width / 4 * 3), jsonFile: "test")
+        view.addSubview(v)
     }
 
     override func didReceiveMemoryWarning() {
