@@ -57,6 +57,23 @@ class WZLayer {
     
     private func fill(path: WZBezierPath, fillColor: Int, commandEncoder: MTLRenderCommandEncoder) {
         
+        var header = path.headSubPath
+        var vertices: [CGPoint] = []
+
+        while let subPath = header, let nextPath = subPath.nextSubPath {
+            
+            for i in 0..<nextPath.subdivisionSegmentsCount {
+                
+                let percent = CGFloat(i) / CGFloat(nextPath.subdivisionSegmentsCount)
+                
+                guard let subSegmentPoint = subPath.calculateValue(at: percent) else { continue }
+                vertices.append(subSegmentPoint)
+                
+                
+            }
+            
+            header = nextPath
+        }
         
     }
     
