@@ -33,6 +33,8 @@ class WZShapeData {
             return WZShapeFillData(json: json)
         case "tr":
             return WZShapeTransformData(json: json)
+        case "sh":
+            return WZShapePathData(json: json)
         case "rc":
             return WZShapeRectangleData(json: json)
         default:

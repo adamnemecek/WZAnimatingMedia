@@ -10,10 +10,10 @@ import SwiftyJSON
 
 class WZShapeFillData: WZShapeData {
  
-    private var color: WZKeyframeGroup!
-    private var opacity: WZKeyframeGroup!
-    private var evenOddFillRule = false
-    private var fillEnabled = false
+    private(set) var color: WZKeyframeGroup!
+    private(set) var opacity: WZKeyframeGroup!
+    private(set) var evenOddFillRule = false
+    private(set) var fillEnabled = false
 
     override func parseJSON(json: JSON) {
         super.parseJSON(json: json)

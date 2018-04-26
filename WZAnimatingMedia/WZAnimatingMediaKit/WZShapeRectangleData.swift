@@ -10,10 +10,10 @@ import SwiftyJSON
 
 class WZShapeRectangleData: WZShapeData {
     
-    private var position: WZKeyframeGroup!
-    private var cornerRadius: WZKeyframeGroup!
-    private var size: WZKeyframeGroup!
-    private var reversed = false
+    private(set) var position: WZKeyframeGroup!
+    private(set) var cornerRadius: WZKeyframeGroup!
+    private(set) var size: WZKeyframeGroup!
+    private(set) var reversed = false
     
     override func parseJSON(json: JSON) {
         super.parseJSON(json: json)

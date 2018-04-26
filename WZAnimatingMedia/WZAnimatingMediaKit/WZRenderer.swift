@@ -15,7 +15,7 @@ extension Array {
 }
 
 struct Vertex {
-    var position: (x: Float, y: Float, z: Float)
+    var position: (x: Float, y: Float)
 }
 
 class WZRenderer: NSObject {
@@ -25,28 +25,19 @@ class WZRenderer: NSObject {
     private(set) var device: MTLDevice
     private var commandQueue: MTLCommandQueue
     private var library: MTLLibrary
-    private var vertexIndiceBuffer: MTLBuffer!
-    private var verticesBuffer: MTLBuffer!
+    var renderData: WZCompositionRenderData!
     
     private override init() {
         
         device = MTLCreateSystemDefaultDevice()!
         commandQueue = device.makeCommandQueue()!
         library = device.makeDefaultLibrary()!
-        
-        var vertexIndices: [UInt16] = [0,1,2,0,2,3]
-        vertexIndiceBuffer = device.makeBuffer(bytes: vertexIndices, length: vertexIndices.size)
-        
-        let vertex: [Vertex] = [Vertex(position: (-1.0, 1.0, 0)),
-                                Vertex(position: (1.0, 1.0, 0)),
-                                Vertex(position: (1.0, -1.0, 0)),
-                                Vertex(position: (-1.0, -1.0, 0))
-        ]
-        
-        verticesBuffer = device.makeBuffer(bytes: vertex, length: vertex.size)
+
     }
     
-    private func createPipelineDescriptor(vertexShaderName: String, fragmentShaderName: String) -> MTLRenderPipelineState? {
+    var i = 0
+    
+    func createPipelineDescriptor(vertexShaderName: String, fragmentShaderName: String) -> MTLRenderPipelineState? {
         
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = library.makeFunction(name: vertexShaderName)
@@ -74,6 +65,12 @@ extension WZRenderer: MTKViewDelegate {
     
     func draw(in view: MTKView) {
         
+        for layer in renderData.childLayers {
+            
+            layer.renderGroup.rootNode?.update(frame: 0)
+        
+        }
+        
         guard let commandBuffer = commandQueue.makeCommandBuffer() else {
             print("create commandBuffer error")
             return
@@ -85,21 +82,21 @@ extension WZRenderer: MTKViewDelegate {
             return
         }
         
-        guard let pipelineDescriptor = createPipelineDescriptor(vertexShaderName: "vertex_shader", fragmentShaderName: "fragment_shader") else {
-            print("create pipelineDescriptor error")
-            return
-        }
-        
-        commandEncoder.setRenderPipelineState(pipelineDescriptor)
-        
-        commandEncoder.setVertexBuffer(verticesBuffer, offset: 0, index: 0)
-        
-        commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: 6, indexType: .uint16, indexBuffer: vertexIndiceBuffer, indexBufferOffset: 0)
+        renderLayer(layer: renderData.wrapperLayer, commandEncoder: commandEncoder)
         
         commandEncoder.endEncoding()
         
         commandBuffer.present(view.currentDrawable!)
         commandBuffer.commit()
         
+    }
+    
+    private func renderLayer(layer: WZLayer, commandEncoder: MTLRenderCommandEncoder) {
+        
+        layer.render(commandEncoder: commandEncoder)
+        
+        for subLayer in layer.sublayers {
+            renderLayer(layer: subLayer, commandEncoder: commandEncoder)
+        }
     }
 }

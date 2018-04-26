@@ -10,12 +10,12 @@ import SwiftyJSON
 
 class WZShapeStrokeData: WZShapeData {
     
-    private var color: WZKeyframeGroup!
-    private var width: WZKeyframeGroup!
-    private var opacity: WZKeyframeGroup!
-    private var capType = 0
-    private var joinType = 0
-    private var fillEnabled = false
+    private(set) var color: WZKeyframeGroup!
+    private(set) var width: WZKeyframeGroup!
+    private(set) var opacity: WZKeyframeGroup!
+    private(set) var capType = 0
+    private(set) var joinType = 0
+    private(set) var fillEnabled = false
     
     override func parseJSON(json: JSON) {
         super.parseJSON(json: json)

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9C8BCC1E34980A3DB72C1CD9 /* Pods_WZAnimatingMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */; };
+		CF1DCF762090334B00FAD8D7 /* WZShapePathData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF752090334B00FAD8D7 /* WZShapePathData.swift */; };
+		CF1DCF78209035A300FAD8D7 /* WZPathAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF77209035A300FAD8D7 /* WZPathAnimator.swift */; };
+		CF1DCF7A2090368B00FAD8D7 /* WZPathInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF792090368B00FAD8D7 /* WZPathInterpolator.swift */; };
+		CF1DCF7C20903EEF00FAD8D7 /* WZBezierData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF7B20903EEF00FAD8D7 /* WZBezierData.swift */; };
+		CF1DCF7E2090428000FAD8D7 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF7D2090428000FAD8D7 /* CGPoint+Extension.swift */; };
+		CF1DCF80209076F200FAD8D7 /* WZBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCF7F209076F200FAD8D7 /* WZBezierPath.swift */; };
 		CFA303E12089CCD700BBAA29 /* t3.json in Resources */ = {isa = PBXBuildFile; fileRef = CFA303E02089CCD700BBAA29 /* t3.json */; };
 		CFA303E32089D1A800BBAA29 /* WZLayerGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA303E22089D1A800BBAA29 /* WZLayerGroupData.swift */; };
 		CFA303E92089DC5B00BBAA29 /* WZMathTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA303E82089DC5B00BBAA29 /* WZMathTool.swift */; };
@@ -33,11 +39,31 @@
 		CFE4B9C02089F4CC003198D8 /* WZShapeStrokeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9BF2089F4CC003198D8 /* WZShapeStrokeData.swift */; };
 		CFE4B9C22089F7B7003198D8 /* WZShapeFillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9C12089F7B7003198D8 /* WZShapeFillData.swift */; };
 		CFE4B9C42089FC57003198D8 /* WZShapeTransformData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9C32089FC57003198D8 /* WZShapeTransformData.swift */; };
+		CFE4B9C6208D8E0A003198D8 /* WZCompositionRenderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9C5208D8E0A003198D8 /* WZCompositionRenderData.swift */; };
+		CFE4B9C8208D9B4E003198D8 /* WZLayerRenderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9C7208D9B4E003198D8 /* WZLayerRenderData.swift */; };
+		CFE4B9CA208D9C8F003198D8 /* WZTransformInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9C9208D9C8F003198D8 /* WZTransformInterpolator.swift */; };
+		CFE4B9CC208D9D57003198D8 /* WZPointInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9CB208D9D57003198D8 /* WZPointInterpolator.swift */; };
+		CFE4B9CE208D9D79003198D8 /* WZValueInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9CD208D9D79003198D8 /* WZValueInterpolator.swift */; };
+		CFE4B9D0208D9E0F003198D8 /* WZSizeInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9CF208D9E0F003198D8 /* WZSizeInterpolator.swift */; };
+		CFE4B9D2208D9E53003198D8 /* WZNumberInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9D1208D9E53003198D8 /* WZNumberInterpolator.swift */; };
+		CFE4B9D4208DAA33003198D8 /* WZRenderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9D3208DAA33003198D8 /* WZRenderGroup.swift */; };
+		CFE4B9D6208DAAB2003198D8 /* WZRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9D5208DAAB2003198D8 /* WZRenderNode.swift */; };
+		CFE4B9D8208DAB10003198D8 /* WZAnimationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9D7208DAB10003198D8 /* WZAnimationNode.swift */; };
+		CFE4B9DA208DB36C003198D8 /* WZRoundedRectAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9D9208DB36C003198D8 /* WZRoundedRectAnimator.swift */; };
+		CFE4B9DC208DB6DA003198D8 /* WZStrokeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DB208DB6DA003198D8 /* WZStrokeRenderer.swift */; };
+		CFE4B9DE208DB78A003198D8 /* WZColorInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DD208DB78A003198D8 /* WZColorInterpolator.swift */; };
+		CFE4B9E0208DBA54003198D8 /* WZFillRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DF208DBA54003198D8 /* WZFillRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2EDB9F84711BDF111E8C1853 /* Pods-WZAnimatingMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WZAnimatingMedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia.release.xcconfig"; sourceTree = "<group>"; };
 		4AA553B4355C21DAC7A48F51 /* Pods-WZAnimatingMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WZAnimatingMedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WZAnimatingMedia/Pods-WZAnimatingMedia.debug.xcconfig"; sourceTree = "<group>"; };
+		CF1DCF752090334B00FAD8D7 /* WZShapePathData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZShapePathData.swift; sourceTree = "<group>"; };
+		CF1DCF77209035A300FAD8D7 /* WZPathAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZPathAnimator.swift; sourceTree = "<group>"; };
+		CF1DCF792090368B00FAD8D7 /* WZPathInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZPathInterpolator.swift; sourceTree = "<group>"; };
+		CF1DCF7B20903EEF00FAD8D7 /* WZBezierData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZBezierData.swift; sourceTree = "<group>"; };
+		CF1DCF7D2090428000FAD8D7 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		CF1DCF7F209076F200FAD8D7 /* WZBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZBezierPath.swift; sourceTree = "<group>"; };
 		CFA303E02089CCD700BBAA29 /* t3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t3.json; sourceTree = "<group>"; };
 		CFA303E22089D1A800BBAA29 /* WZLayerGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZLayerGroupData.swift; sourceTree = "<group>"; };
 		CFA303E82089DC5B00BBAA29 /* WZMathTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZMathTool.swift; sourceTree = "<group>"; };
@@ -65,6 +91,20 @@
 		CFE4B9BF2089F4CC003198D8 /* WZShapeStrokeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZShapeStrokeData.swift; sourceTree = "<group>"; };
 		CFE4B9C12089F7B7003198D8 /* WZShapeFillData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZShapeFillData.swift; sourceTree = "<group>"; };
 		CFE4B9C32089FC57003198D8 /* WZShapeTransformData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZShapeTransformData.swift; sourceTree = "<group>"; };
+		CFE4B9C5208D8E0A003198D8 /* WZCompositionRenderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZCompositionRenderData.swift; sourceTree = "<group>"; };
+		CFE4B9C7208D9B4E003198D8 /* WZLayerRenderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZLayerRenderData.swift; sourceTree = "<group>"; };
+		CFE4B9C9208D9C8F003198D8 /* WZTransformInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZTransformInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9CB208D9D57003198D8 /* WZPointInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZPointInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9CD208D9D79003198D8 /* WZValueInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZValueInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9CF208D9E0F003198D8 /* WZSizeInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZSizeInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9D1208D9E53003198D8 /* WZNumberInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZNumberInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9D3208DAA33003198D8 /* WZRenderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZRenderGroup.swift; sourceTree = "<group>"; };
+		CFE4B9D5208DAAB2003198D8 /* WZRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZRenderNode.swift; sourceTree = "<group>"; };
+		CFE4B9D7208DAB10003198D8 /* WZAnimationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZAnimationNode.swift; sourceTree = "<group>"; };
+		CFE4B9D9208DB36C003198D8 /* WZRoundedRectAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZRoundedRectAnimator.swift; sourceTree = "<group>"; };
+		CFE4B9DB208DB6DA003198D8 /* WZStrokeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZStrokeRenderer.swift; sourceTree = "<group>"; };
+		CFE4B9DD208DB78A003198D8 /* WZColorInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZColorInterpolator.swift; sourceTree = "<group>"; };
+		CFE4B9DF208DBA54003198D8 /* WZFillRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZFillRenderer.swift; sourceTree = "<group>"; };
 		F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WZAnimatingMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,7 +191,27 @@
 				CFE4B9BD2089F21D003198D8 /* WZShapeRectangleData.swift */,
 				CFE4B9BF2089F4CC003198D8 /* WZShapeStrokeData.swift */,
 				CFE4B9C12089F7B7003198D8 /* WZShapeFillData.swift */,
+				CF1DCF752090334B00FAD8D7 /* WZShapePathData.swift */,
 				CFE4B9C32089FC57003198D8 /* WZShapeTransformData.swift */,
+				CFE4B9C5208D8E0A003198D8 /* WZCompositionRenderData.swift */,
+				CFE4B9C7208D9B4E003198D8 /* WZLayerRenderData.swift */,
+				CFE4B9C9208D9C8F003198D8 /* WZTransformInterpolator.swift */,
+				CFE4B9CB208D9D57003198D8 /* WZPointInterpolator.swift */,
+				CFE4B9CD208D9D79003198D8 /* WZValueInterpolator.swift */,
+				CFE4B9CF208D9E0F003198D8 /* WZSizeInterpolator.swift */,
+				CFE4B9D1208D9E53003198D8 /* WZNumberInterpolator.swift */,
+				CF1DCF792090368B00FAD8D7 /* WZPathInterpolator.swift */,
+				CFE4B9D3208DAA33003198D8 /* WZRenderGroup.swift */,
+				CFE4B9D5208DAAB2003198D8 /* WZRenderNode.swift */,
+				CFE4B9D7208DAB10003198D8 /* WZAnimationNode.swift */,
+				CFE4B9D9208DB36C003198D8 /* WZRoundedRectAnimator.swift */,
+				CF1DCF77209035A300FAD8D7 /* WZPathAnimator.swift */,
+				CFE4B9DB208DB6DA003198D8 /* WZStrokeRenderer.swift */,
+				CFE4B9DD208DB78A003198D8 /* WZColorInterpolator.swift */,
+				CFE4B9DF208DBA54003198D8 /* WZFillRenderer.swift */,
+				CF1DCF7B20903EEF00FAD8D7 /* WZBezierData.swift */,
+				CF1DCF7D2090428000FAD8D7 /* CGPoint+Extension.swift */,
+				CF1DCF7F209076F200FAD8D7 /* WZBezierPath.swift */,
 			);
 			path = WZAnimatingMediaKit;
 			sourceTree = "<group>";
@@ -273,23 +333,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1DCF7A2090368B00FAD8D7 /* WZPathInterpolator.swift in Sources */,
+				CFE4B9D0208D9E0F003198D8 /* WZSizeInterpolator.swift in Sources */,
+				CFE4B9CE208D9D79003198D8 /* WZValueInterpolator.swift in Sources */,
 				CFDB576B2088451F001F1715 /* WZKeyframe.swift in Sources */,
+				CF1DCF80209076F200FAD8D7 /* WZBezierPath.swift in Sources */,
 				CFDB57782088AD57001F1715 /* WZLayer.swift in Sources */,
+				CFE4B9C6208D8E0A003198D8 /* WZCompositionRenderData.swift in Sources */,
+				CFE4B9D8208DAB10003198D8 /* WZAnimationNode.swift in Sources */,
 				CFDB576320883D29001F1715 /* WZLayerData.swift in Sources */,
+				CF1DCF7C20903EEF00FAD8D7 /* WZBezierData.swift in Sources */,
 				CFDB575D20875131001F1715 /* WZAnimatingMediaView.swift in Sources */,
+				CF1DCF78209035A300FAD8D7 /* WZPathAnimator.swift in Sources */,
+				CFE4B9CA208D9C8F003198D8 /* WZTransformInterpolator.swift in Sources */,
 				CFDB574C20875100001F1715 /* ViewController.swift in Sources */,
+				CFE4B9E0208DBA54003198D8 /* WZFillRenderer.swift in Sources */,
+				CFE4B9D2208D9E53003198D8 /* WZNumberInterpolator.swift in Sources */,
 				CFDB5772208888B8001F1715 /* VertexShader.metal in Sources */,
+				CFE4B9DE208DB78A003198D8 /* WZColorInterpolator.swift in Sources */,
+				CF1DCF762090334B00FAD8D7 /* WZShapePathData.swift in Sources */,
 				CFA303E92089DC5B00BBAA29 /* WZMathTool.swift in Sources */,
 				CFE4B9C42089FC57003198D8 /* WZShapeTransformData.swift in Sources */,
+				CFE4B9CC208D9D57003198D8 /* WZPointInterpolator.swift in Sources */,
+				CFE4B9D6208DAAB2003198D8 /* WZRenderNode.swift in Sources */,
 				CFDB574A20875100001F1715 /* AppDelegate.swift in Sources */,
+				CFE4B9DC208DB6DA003198D8 /* WZStrokeRenderer.swift in Sources */,
 				CFDB57702088824B001F1715 /* WZRenderer.swift in Sources */,
 				CFDB577420888977001F1715 /* BaseInfo.metal in Sources */,
+				CFE4B9C8208D9B4E003198D8 /* WZLayerRenderData.swift in Sources */,
 				CFE4B9BA2089ECED003198D8 /* WZShapeGroupData.swift in Sources */,
 				CFDB577620888C02001F1715 /* FragmentShader.metal in Sources */,
+				CFE4B9D4208DAA33003198D8 /* WZRenderGroup.swift in Sources */,
 				CFE4B9C02089F4CC003198D8 /* WZShapeStrokeData.swift in Sources */,
 				CFE4B9BE2089F21D003198D8 /* WZShapeRectangleData.swift in Sources */,
+				CFE4B9DA208DB36C003198D8 /* WZRoundedRectAnimator.swift in Sources */,
 				CFDB5769208844E7001F1715 /* WZKeyframeGroup.swift in Sources */,
 				CFE4B9BC2089F179003198D8 /* WZShapeData.swift in Sources */,
+				CF1DCF7E2090428000FAD8D7 /* CGPoint+Extension.swift in Sources */,
 				CFDB5761208838C8001F1715 /* WZComposition.swift in Sources */,
 				CFA303E32089D1A800BBAA29 /* WZLayerGroupData.swift in Sources */,
 				CFE4B9C22089F7B7003198D8 /* WZShapeFillData.swift in Sources */,

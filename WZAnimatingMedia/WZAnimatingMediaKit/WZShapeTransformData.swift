@@ -10,11 +10,11 @@ import SwiftyJSON
 
 class WZShapeTransformData: WZShapeData {
     
-    private var position: WZKeyframeGroup!
-    private var anchor: WZKeyframeGroup!
-    private var scale: WZKeyframeGroup!
-    private var rotation: WZKeyframeGroup!
-    private var opacity: WZKeyframeGroup!
+    private(set) var position: WZKeyframeGroup!
+    private(set) var anchor: WZKeyframeGroup!
+    private(set) var scale: WZKeyframeGroup!
+    private(set) var rotation: WZKeyframeGroup!
+    private(set) var opacity: WZKeyframeGroup!
 
     override func parseJSON(json: JSON) {
         super.parseJSON(json: json)

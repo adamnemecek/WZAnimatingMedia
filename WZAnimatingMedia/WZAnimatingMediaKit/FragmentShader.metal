@@ -12,5 +12,5 @@ using namespace metal;
 
 fragment half4 fragment_shader(VertexToFragmentInfo fragmentIn [[stage_in]]) {
     
-    return half4(1, 0, 0, 1);
+    return half4(1, 0, 1, 1);
 }

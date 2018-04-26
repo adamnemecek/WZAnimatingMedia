@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let v = WZAnimatingMediaView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.width / 4 * 3), jsonFile: "t3")
+        v.backgroundColor = .blue
         view.addSubview(v)
     }
 

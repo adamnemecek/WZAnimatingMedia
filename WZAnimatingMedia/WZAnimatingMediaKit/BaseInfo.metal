@@ -10,7 +10,7 @@
 using namespace metal;
 
 struct VertexIn {
-    packed_float3 position;
+    packed_float2 position;
 };
 
 struct VertexToFragmentInfo {

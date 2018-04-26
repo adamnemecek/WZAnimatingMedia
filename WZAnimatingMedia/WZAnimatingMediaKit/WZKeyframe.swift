@@ -20,6 +20,7 @@ class WZKeyframe {
     var floatValue: CGFloat = 0
     var pointValue: CGPoint = .zero
     var sizeValue: CGSize = .zero
+    var beizerData = WZBezierData()
     
     init(tangentJSON: JSON) {
         parseJSON(tangentJSON)
@@ -58,9 +59,11 @@ class WZKeyframe {
     
     private func setupOutput(_ json: JSON) {
         
-        floatValue = CGFloat(json.floatValue)
-        
-        if let arrayValue = json.array {
+        if let floatValue = json.float {
+            
+            self.floatValue = CGFloat(floatValue)
+            
+        } else if let arrayValue = json.array {
             
             if arrayValue.count >= 1 {
                 floatValue = CGFloat(arrayValue[0].floatValue)
@@ -72,6 +75,9 @@ class WZKeyframe {
                 sizeValue = CGSize(width:  CGFloat(arrayValue[0].floatValue), height:  CGFloat(arrayValue[1].floatValue))
 
             }
+        } else {
+            
+            beizerData = WZBezierData(json: json)
         }
     }
     

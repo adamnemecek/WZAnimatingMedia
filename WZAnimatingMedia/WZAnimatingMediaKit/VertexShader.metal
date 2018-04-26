@@ -16,9 +16,9 @@ vertex VertexToFragmentInfo vertex_shader(uint vertexID [[vertex_id]],
     
     VertexToFragmentInfo vertexToFragmentInfo;
     
-    float3 position = vertices[vertexID].position;
+    float2 position = vertices[vertexID].position;
     
-    vertexToFragmentInfo.position = float4(position, 1);
+    vertexToFragmentInfo.position = float4(position, 0, 1);
     
     return vertexToFragmentInfo;
 }

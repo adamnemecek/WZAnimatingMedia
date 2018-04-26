@@ -10,7 +10,7 @@ import SwiftyJSON
 
 class WZKeyframeGroup {
     
-    private var keyframes: [WZKeyframe] = []
+    private(set) var keyframes: [WZKeyframe] = []
     
     init(json: JSON) {
         

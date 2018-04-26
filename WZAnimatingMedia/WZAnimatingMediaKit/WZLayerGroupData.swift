@@ -10,7 +10,7 @@ import SwiftyJSON
 
 class WZLayerGroupData {
     
-    private var layerDatas: [WZLayerData] = []
+    private(set) var layerDatas: [WZLayerData] = []
     private var layerMap: [Int: WZLayerData] = [:]
     
     init(layersJSON: [JSON]) {

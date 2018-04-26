@@ -10,7 +10,7 @@ import SwiftyJSON
 
 class WZShapeGroupData: WZShapeData {
     
-    private var shapes: [WZShapeData] = []
+    private(set) var shapes: [WZShapeData] = []
     
     override func parseJSON(json: JSON) {
         super.parseJSON(json: json)

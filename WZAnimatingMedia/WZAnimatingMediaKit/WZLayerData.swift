@@ -21,25 +21,25 @@ enum WZLayerType: Int {
 
 class WZLayerData {
     
-    private var name = ""
+    private(set) var name = ""
     private var bounds: CGRect = .zero
     private var id = 0
-    private var type: WZLayerType = .unknow
+    private(set) var type: WZLayerType = .unknow
     private var refID: Int?
     private var parentID = 0
     private var startFrame: Int?
-    private var inFrame = 0
-    private var outFrame = 0
-    private var timeStretch = 1
-    private var opacity: WZKeyframeGroup!
-    private var rotation: WZKeyframeGroup!
+    private(set) var inFrame = 0
+    private(set) var outFrame = 0
+    private(set) var timeStretch = 1
+    private(set) var opacity: WZKeyframeGroup!
+    private(set) var rotation: WZKeyframeGroup!
     private var positionX: WZKeyframeGroup!
     private var positionY: WZKeyframeGroup!
-    private var position: WZKeyframeGroup!
-    private var anchor: WZKeyframeGroup!
-    private var scale: WZKeyframeGroup!
+    private(set) var position: WZKeyframeGroup!
+    private(set) var anchor: WZKeyframeGroup!
+    private(set) var scale: WZKeyframeGroup!
     private var matteType = 0
-    private var shapes: [WZShapeData]!
+    private(set) var shapes: [WZShapeData] = []
     
     init(json: JSON) {
         
