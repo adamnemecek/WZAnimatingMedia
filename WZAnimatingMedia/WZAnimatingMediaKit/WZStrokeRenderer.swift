@@ -29,7 +29,7 @@ class WZStrokeRenderer: WZRenderNode {
         super.performUpdate()
         
         outputLayer.strokeColor = 0xFF0000
-        outputLayer.lineWidth = 8
+        outputLayer.lineWidth = 14
         outputLayer.path = inputNode?.localPath
     }
 }

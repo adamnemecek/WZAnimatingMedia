@@ -64,7 +64,7 @@ class WZSubPath {
         let normalLength = sqrt(normal.dx * normal.dx + normal.dy * normal.dy)
         
         if normalLength == 0 {
-            return CGVector(dx: 1, dy: 0)
+            return CGVector(dx: -1, dy: 0)
         }
         
         let scale = 1 / normalLength

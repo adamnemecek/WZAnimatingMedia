@@ -10,7 +10,8 @@
 #include "BaseInfo.metal"
 using namespace metal;
 
-fragment half4 fragment_shader(VertexToFragmentInfo fragmentIn [[stage_in]]) {
+fragment half4 fragment_shader(VertexToFragmentInfo fragmentIn [[stage_in]],
+                               constant float3 & color [[buffer(0)]]) {
     
-    return half4(1, 0, 1, 1);
+    return half4(half3(color), 1);
 }

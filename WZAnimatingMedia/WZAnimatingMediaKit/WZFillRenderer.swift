@@ -24,4 +24,11 @@ class WZFillRenderer: WZRenderNode {
         
         outputLayer.fillRule = evenOddFillRule ? "even-odd" : "non-zero"
     }
+    
+    override func performUpdate() {
+        super.performUpdate()
+        
+        outputLayer.fillColor = 0xFFFF00
+        outputLayer.path = inputNode!.inputNode!.localPath
+    }
 }
