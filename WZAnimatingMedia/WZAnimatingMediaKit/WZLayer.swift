@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import simd
 
 enum WZLineJoin: Int {
     case bevel
@@ -28,12 +29,14 @@ class WZLayer {
     var lineWidth: CGFloat = 0
     var opacity: CGFloat = 0
     var path: WZBezierPath!
+    var projectionMatrixBuffer: MTLBuffer!
     
     init() {
         
         vertexIndiceBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<UInt16>.size * Int(UInt16.max), options: .storageModeShared)
         verticesBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<Vertex>.size * Int(UInt16.max), options: .storageModeShared)
         colorBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<(Float, Float, Float)>.size, options: .storageModeShared)
+        projectionMatrixBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<matrix_float4x4>.size, options: .storageModeShared)
     }
     
     func insert(_ sublayer: WZLayer, at index: Int) {

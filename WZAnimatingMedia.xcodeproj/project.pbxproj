@@ -53,6 +53,7 @@
 		CFE4B9DC208DB6DA003198D8 /* WZStrokeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DB208DB6DA003198D8 /* WZStrokeRenderer.swift */; };
 		CFE4B9DE208DB78A003198D8 /* WZColorInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DD208DB78A003198D8 /* WZColorInterpolator.swift */; };
 		CFE4B9E0208DBA54003198D8 /* WZFillRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE4B9DF208DBA54003198D8 /* WZFillRenderer.swift */; };
+		D3177379209356AF00AAB3F4 /* MatrixTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3177378209356AF00AAB3F4 /* MatrixTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,8 @@
 		CFE4B9DB208DB6DA003198D8 /* WZStrokeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZStrokeRenderer.swift; sourceTree = "<group>"; };
 		CFE4B9DD208DB78A003198D8 /* WZColorInterpolator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZColorInterpolator.swift; sourceTree = "<group>"; };
 		CFE4B9DF208DBA54003198D8 /* WZFillRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZFillRenderer.swift; sourceTree = "<group>"; };
+		D3177378209356AF00AAB3F4 /* MatrixTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixTool.swift; sourceTree = "<group>"; };
+		D317737A2093573B00AAB3F4 /* WZAnimatingMedia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WZAnimatingMedia-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2690E323D074AE5C90FEA29 /* Pods_WZAnimatingMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WZAnimatingMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -212,6 +215,8 @@
 				CF1DCF7B20903EEF00FAD8D7 /* WZBezierData.swift */,
 				CF1DCF7D2090428000FAD8D7 /* CGPoint+Extension.swift */,
 				CF1DCF7F209076F200FAD8D7 /* WZBezierPath.swift */,
+				D3177378209356AF00AAB3F4 /* MatrixTool.swift */,
+				D317737A2093573B00AAB3F4 /* WZAnimatingMedia-Bridging-Header.h */,
 			);
 			path = WZAnimatingMediaKit;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				TargetAttributes = {
 					CFDB574520875100001F1715 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -356,6 +362,7 @@
 				CFE4B9C42089FC57003198D8 /* WZShapeTransformData.swift in Sources */,
 				CFE4B9CC208D9D57003198D8 /* WZPointInterpolator.swift in Sources */,
 				CFE4B9D6208DAAB2003198D8 /* WZRenderNode.swift in Sources */,
+				D3177379209356AF00AAB3F4 /* MatrixTool.swift in Sources */,
 				CFDB574A20875100001F1715 /* AppDelegate.swift in Sources */,
 				CFE4B9DC208DB6DA003198D8 /* WZStrokeRenderer.swift in Sources */,
 				CFDB57702088824B001F1715 /* WZRenderer.swift in Sources */,
@@ -517,6 +524,7 @@
 			baseConfigurationReference = 4AA553B4355C21DAC7A48F51 /* Pods-WZAnimatingMedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RQRV7P524;
 				INFOPLIST_FILE = WZAnimatingMedia/Info.plist;
@@ -526,6 +534,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fanyinan.WZAnimatingMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WZAnimatingMedia/WZAnimatingMediaKit/WZAnimatingMedia-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -536,6 +546,7 @@
 			baseConfigurationReference = 2EDB9F84711BDF111E8C1853 /* Pods-WZAnimatingMedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4RQRV7P524;
 				INFOPLIST_FILE = WZAnimatingMedia/Info.plist;
@@ -545,6 +556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fanyinan.WZAnimatingMedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WZAnimatingMedia/WZAnimatingMediaKit/WZAnimatingMedia-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
