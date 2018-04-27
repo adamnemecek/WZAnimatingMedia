@@ -28,8 +28,11 @@ class WZStrokeRenderer: WZRenderNode {
     override func performUpdate() {
         super.performUpdate()
         
-        outputLayer.strokeColor = 0xFF0000
+        outputLayer.strokeColor = colorInterpolator.color(at: currentFrame)
         outputLayer.lineWidth = 14
-        outputLayer.path = inputNode?.localPath
+    }
+    
+    override func rebuildOutputs() {
+        outputLayer.path = inputNode?.outputPath
     }
 }

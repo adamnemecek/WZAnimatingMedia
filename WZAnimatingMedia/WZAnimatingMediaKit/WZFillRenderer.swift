@@ -28,7 +28,10 @@ class WZFillRenderer: WZRenderNode {
     override func performUpdate() {
         super.performUpdate()
         
-        outputLayer.fillColor = 0xFFFF00
-        outputLayer.path = inputNode!.inputNode!.localPath
+        outputLayer.fillColor = colorInterpolator.color(at: currentFrame)
+    }
+    
+    override func rebuildOutputs() {
+        outputLayer.path = inputNode?.outputPath
     }
 }

@@ -12,14 +12,19 @@ class WZKeyframe {
     
     private var time = 0
     private var isHold = true
+    
+    //表示对progress进行曲线处理
     private var inTangent: CGPoint = .zero
     private var outTangent: CGPoint = .zero
+    
+    //表示对值本身进行曲线处理
     private var spatialOutTangent: CGPoint = .zero
     private var spatialInTangent: CGPoint = .zero
     
     var floatValue: CGFloat = 0
     var pointValue: CGPoint = .zero
     var sizeValue: CGSize = .zero
+    var colorValue: UIColor = .white
     var beizerData = WZBezierData()
     
     init(tangentJSON: JSON) {
@@ -71,10 +76,21 @@ class WZKeyframe {
             
             if arrayValue.count == 2 {
                 
-                pointValue = CGPoint(x:  CGFloat(arrayValue[0].floatValue), y:  CGFloat(arrayValue[1].floatValue))
-                sizeValue = CGSize(width:  CGFloat(arrayValue[0].floatValue), height:  CGFloat(arrayValue[1].floatValue))
+                pointValue = pointFrameValueArray(values: arrayValue)
+                sizeValue = sizeFrameValueArray(values: arrayValue)
 
             }
+            
+            if arrayValue.count == 4 {
+                
+                var colorComponents = arrayValue.map({ CGFloat($0.floatValue) })
+                if colorComponents.max()! > 1 {
+                    colorComponents = colorComponents.map({ $0 / CGFloat(255) })
+                }
+                
+                colorValue = UIColor(red: colorComponents[0], green: colorComponents[1], blue: colorComponents[2], alpha: colorComponents[3])
+            }
+            
         } else {
             
             beizerData = WZBezierData(json: json)
@@ -88,6 +104,18 @@ class WZKeyframe {
         if values.count >= 2 {
             point.x = CGFloat(values[0].floatValue)
             point.y = CGFloat(values[1].floatValue)
+        }
+        
+        return point
+    }
+    
+    private func sizeFrameValueArray(values: [JSON]) -> CGSize {
+        
+        var point: CGSize = .zero
+        
+        if values.count >= 2 {
+            point.width = CGFloat(values[0].floatValue)
+            point.height = CGFloat(values[1].floatValue)
         }
         
         return point

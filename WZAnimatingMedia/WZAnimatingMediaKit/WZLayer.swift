@@ -21,10 +21,10 @@ class WZLayer {
     private var colorBuffer: MTLBuffer!
     
     var sublayers: [WZLayer] = []
-    var fillColor: Int?
+    var fillColor: UIColor?
     var lineJoin: WZLineJoin = .bevel
     var fillRule = ""
-    var strokeColor: Int?
+    var strokeColor: UIColor?
     var lineWidth: CGFloat = 0
     var opacity: CGFloat = 0
     var path: WZBezierPath!
@@ -59,7 +59,7 @@ class WZLayer {
         }
     }
     
-    private func fill(path: WZBezierPath, fillColor: Int, commandEncoder: MTLRenderCommandEncoder) {
+    private func fill(path: WZBezierPath, fillColor: UIColor, commandEncoder: MTLRenderCommandEncoder) {
         
         var header = path.headSubPath
         var points: [CGPoint] = []
@@ -94,11 +94,8 @@ class WZLayer {
         
         let ptr2 = colorBuffer.contents().bindMemory(to: (Float, Float, Float).self, capacity: 1)
         
-        let r = Float(fillColor >> 16) / 255
-        let g = Float((fillColor  & 0x00FF00) >> 8) / 255
-        let b = Float(fillColor & 0xFF) / 255
-        
-        ptr2.pointee = (r, g, b)
+        let components = (fillColor.cgColor.components ?? [CGFloat](repeating: 0, count: 4)).map({ Float($0) })
+        ptr2.pointee = (components[0], components[1], components[2])
         
         guard let pipelineDescriptor = WZRenderer.shared.createPipelineDescriptor(vertexShaderName: "vertex_shader", fragmentShaderName: "fragment_shader") else {
             print("create pipelineDescriptor error")
@@ -195,7 +192,7 @@ class WZLayer {
         return cp / 2
     }
     
-    private func strok(path: WZBezierPath, lineWidth: CGFloat, strockColor: Int, commandEncoder: MTLRenderCommandEncoder) {
+    private func strok(path: WZBezierPath, lineWidth: CGFloat, strockColor: UIColor, commandEncoder: MTLRenderCommandEncoder) {
         
         var vertices: [Vertex] = []
         
@@ -271,11 +268,8 @@ class WZLayer {
         
         let ptr2 = colorBuffer.contents().bindMemory(to: (Float, Float, Float).self, capacity: 1)
         
-        let r = Float(strockColor >> 16) / 255
-        let g = Float((strockColor >> 8) & 0xFF) / 255
-        let b = Float(strockColor & 0xFF) / 255
-        
-        ptr2.pointee = (r, g, b)
+        let components = (strockColor.cgColor.components ?? [CGFloat](repeating: 0, count: 4)).map({ Float($0) })
+        ptr2.pointee = (components[0], components[1], components[2])
         
         guard let pipelineDescriptor = WZRenderer.shared.createPipelineDescriptor(vertexShaderName: "vertex_shader", fragmentShaderName: "fragment_shader") else {
             print("create pipelineDescriptor error")

@@ -14,7 +14,8 @@ class WZAnimationNode {
     private(set) var inputNode: WZAnimationNode?
     private(set) var currentFrame = 0
     
-    var localPath = WZBezierPath()
+    var localPath: WZBezierPath?
+    var outputPath: WZBezierPath?
     
     init(inputNode: WZAnimationNode?, keyName: String) {
         self.inputNode = inputNode
@@ -29,9 +30,24 @@ class WZAnimationNode {
         currentFrame = frame
         
         performUpdate()
+        
+        rebuildOutputs()
     }
     
     func performUpdate() {
         
+    }
+    
+    func rebuildOutputs() {
+        
+        if let inputNode = inputNode {
+            
+            outputPath = inputNode.outputPath
+
+        } else {
+            
+            outputPath = localPath
+
+        }
     }
 }
