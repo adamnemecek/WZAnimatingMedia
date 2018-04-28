@@ -32,6 +32,7 @@ class WZComposition {
         let height = json["h"].intValue
         let width = json["w"].intValue
         bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        WZRenderer.shared.renderSize = bounds.size
         
         startFrame = json["ip"].intValue
         endFrame = json["op"].intValue

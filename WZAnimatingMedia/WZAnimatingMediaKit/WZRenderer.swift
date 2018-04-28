@@ -26,6 +26,7 @@ class WZRenderer: NSObject {
     private var commandQueue: MTLCommandQueue
     private var library: MTLLibrary
     var renderData: WZCompositionRenderData!
+    var renderSize: CGSize = .zero
     
     private override init() {
         

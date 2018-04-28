@@ -36,7 +36,10 @@ class WZLayer {
         vertexIndiceBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<UInt16>.size * Int(UInt16.max), options: .storageModeShared)
         verticesBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<Vertex>.size * Int(UInt16.max), options: .storageModeShared)
         colorBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<(Float, Float, Float)>.size, options: .storageModeShared)
-        projectionMatrixBuffer = WZRenderer.shared.device.makeBuffer(length: MemoryLayout<matrix_float4x4>.size, options: .storageModeShared)
+        
+        var projectionMatrix = matrix_float4x4.ortho(left: 0, right: Float(WZRenderer.shared.renderSize.width), bottom: Float(WZRenderer.shared.renderSize.height), top: 0, nearZ: -1, farZ: 1)
+        projectionMatrixBuffer = WZRenderer.shared.device.makeBuffer(bytes: &projectionMatrix, length: MemoryLayout<matrix_float4x4>.size, options: .storageModeShared)
+
     }
     
     func insert(_ sublayer: WZLayer, at index: Int) {
@@ -88,9 +91,9 @@ class WZLayer {
         let minX = vertices.min(by: {$0.position.x < $1.position.x})?.position.x ?? 0
         let minY = vertices.min(by: {$0.position.y < $1.position.y})?.position.y ?? 0
         
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850) / 500, y: ($0.position.y - -50) / 281))})
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
-        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
+        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850), y: ($0.position.y - -50)))})
+//        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
+//        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
         
         let ptr = verticesBuffer.contents().bindMemory(to: Vertex.self, capacity: vertices.count)
         ptr.assign(from: vertices, count: vertices.count)
@@ -107,6 +110,7 @@ class WZLayer {
         
         commandEncoder.setRenderPipelineState(pipelineDescriptor)
         commandEncoder.setVertexBuffer(verticesBuffer, offset: 0, index: 0)
+        commandEncoder.setVertexBuffer(projectionMatrixBuffer, offset: 0, index: 1)
         commandEncoder.setFragmentBuffer(colorBuffer, offset: 0, index: 0)
         commandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
 
@@ -231,9 +235,19 @@ class WZLayer {
         let minX = vertices.min(by: {$0.position.x < $1.position.x})?.position.x ?? 0
         let minY = vertices.min(by: {$0.position.y < $1.position.y})?.position.y ?? 0
         
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850) / 500, y: ($0.position.y - -50) / 281))})
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
-        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
+        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850), y: ($0.position.y - -50)))})
+
+        var projectionMatrix = matrix_float4x4.ortho(left: 0, right: Float(WZRenderer.shared.renderSize.width), bottom: Float(WZRenderer.shared.renderSize.height), top: 0, nearZ: -1, farZ: 1)
+
+        var vs: [float4] = []
+        
+        for v in vertices {
+            
+            let a = projectionMatrix * float4(v.position.x, v.position.y, 0, 1)
+            vs.append(a)
+        }
+//        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
+//        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
         
         //        let vertex: [Vertex] = [Vertex(position: (-0.5, 0.5)),
         //                                Vertex(position: (0.5, 0.5)),
@@ -281,6 +295,7 @@ class WZLayer {
         
         commandEncoder.setRenderPipelineState(pipelineDescriptor)
         commandEncoder.setVertexBuffer(verticesBuffer, offset: 0, index: 0)
+        commandEncoder.setVertexBuffer(projectionMatrixBuffer, offset: 0, index: 1)
         commandEncoder.setFragmentBuffer(colorBuffer, offset: 0, index: 0)
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: vertexIndiceBuffer, indexBufferOffset: 0)
     }

@@ -27,7 +27,7 @@ class WZAnimatingMediaView: UIView {
             } else {
                 let widthScale = composition.bounds.width / frame.width
                 let heightScale = composition.bounds.height / frame.height
-                let scale = min(widthScale, heightScale)
+                let scale = max(widthScale, heightScale)
                 let mtkViewWidth = composition.bounds.width / scale
                 let mtkViewHeight = composition.bounds.height / scale
                 mtkViewFrame = CGRect(x: (frame.width - mtkViewWidth) / 2, y: (frame.height - mtkViewHeight) / 2, width: mtkViewWidth, height: mtkViewHeight)

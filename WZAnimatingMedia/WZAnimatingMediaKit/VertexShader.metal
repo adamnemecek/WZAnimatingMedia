@@ -12,13 +12,14 @@ using namespace metal;
 
 
 vertex VertexToFragmentInfo vertex_shader(uint vertexID [[vertex_id]],
-                                constant VertexIn* vertices [[buffer(0)]]) {
+                                          constant VertexIn* vertices [[buffer(0)]],
+                                          constant float4x4& projectionMatrix [[buffer(1)]]) {
     
     VertexToFragmentInfo vertexToFragmentInfo;
     
     float2 position = vertices[vertexID].position;
     
-    vertexToFragmentInfo.position = float4(position, 0, 1);
+    vertexToFragmentInfo.position = projectionMatrix * float4(position, 0, 1);
     
     return vertexToFragmentInfo;
 }
