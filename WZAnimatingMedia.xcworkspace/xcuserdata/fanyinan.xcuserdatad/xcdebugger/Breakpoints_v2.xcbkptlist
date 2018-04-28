@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WZAnimatingMedia/WZAnimatingMediaKit/WZLayer.swift"
-            timestampString = "546518348.828775"
+            timestampString = "546609324.649788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "strok(path:lineWidth:strockColor:commandEncoder:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WZAnimatingMedia/WZAnimatingMediaKit/WZLayer.swift"
-            timestampString = "546518348.8288521"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "strok(path:lineWidth:strockColor:commandEncoder:)"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "calculateArea(v1:v2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WZAnimatingMedia/WZAnimatingMediaKit/WZLayer.swift"
-            timestampString = "546518348.828907"
+            timestampString = "546609324.6502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "fill(path:fillColor:commandEncoder:)"
             landmarkType = "7">
          </BreakpointContent>

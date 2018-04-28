@@ -10,7 +10,7 @@ import UIKit
 
 class WZPathInterpolator: WZValueInterpolator {
     
-    func path(at frame: Int) -> WZBezierPath {
+    func path(at frame: Double) -> WZBezierPath {
         
         let path = WZBezierPath()
         

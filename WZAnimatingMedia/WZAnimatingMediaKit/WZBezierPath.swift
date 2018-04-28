@@ -33,16 +33,11 @@ class WZSubPath {
         
         guard let nextSubPath = nextSubPath else { return nil }
         
-        let a = endPoint
-        let p1 = nextSubPath.controlPoint1
-        let p2 = nextSubPath.controlPoint2
-        let b = nextSubPath.endPoint
-        let nt = 1.0 - t
-        
-        let x = a.x * nt * nt * nt  +  3.0 * p1.x * nt * nt * t  +  3.0 * p2.x * nt * t * t  +  b.x * t * t * t
-        let y = a.y * nt * nt * nt  +  3.0 * p1.y * nt * nt * t  +  3.0 * p2.y * nt * t * t  +  b.y * t * t * t
-        
-        return CGPoint(x: x, y: y)
+        return WZMathTool.pointInCubic(startPoint: endPoint,
+                                       controlPoint1: nextSubPath.controlPoint1,
+                                       controlPoint2: nextSubPath.controlPoint2,
+                                       endPoint: nextSubPath.endPoint,
+                                       t: t)
     }
     
     func calculateNormal(at t: CGFloat) -> CGVector? {
@@ -86,15 +81,23 @@ class WZBezierPath {
         addSubPath(endPoint: point, controlPoint1: .zero, controlPoint2: .zero, approxLength: 0)
     }
     
+    func addLine(endPoint: CGPoint) {
+        
+        guard let tailSubPath = tailSubPath else { return }
+        
+        let length = distance(point1: tailSubPath.endPoint, point2: endPoint)
+        addSubPath(endPoint: endPoint, controlPoint1: tailSubPath.endPoint, controlPoint2: endPoint, approxLength: length)
+    }
+    
     func addCurve(endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {
         
+        guard let tailSubPath = tailSubPath else { return }
+
         var length: CGFloat = 0
         
-        if let tailSubPath = tailSubPath {
-            length += distance(point1: tailSubPath.endPoint, point2: tailSubPath.controlPoint2)
-            length += distance(point1: tailSubPath.controlPoint2, point2: controlPoint1)
-            length += distance(point1: controlPoint1, point2: endPoint)
-        }
+        length += distance(point1: tailSubPath.endPoint, point2: tailSubPath.controlPoint2)
+        length += distance(point1: tailSubPath.controlPoint2, point2: controlPoint1)
+        length += distance(point1: controlPoint1, point2: endPoint)
         
         addSubPath(endPoint: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2, approxLength: length)
     }

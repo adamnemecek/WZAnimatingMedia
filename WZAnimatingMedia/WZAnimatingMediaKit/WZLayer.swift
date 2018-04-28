@@ -21,6 +21,7 @@ class WZLayer {
     private var verticesBuffer: MTLBuffer!
     private var colorBuffer: MTLBuffer!
     
+    var superLayer: WZLayer?
     var sublayers: [WZLayer] = []
     var fillColor: UIColor?
     var lineJoin: WZLineJoin = .bevel
@@ -30,6 +31,11 @@ class WZLayer {
     var opacity: CGFloat = 0
     var path: WZBezierPath!
     var projectionMatrixBuffer: MTLBuffer!
+    var transform: CATransform3D = CATransform3DIdentity
+    
+    var fianlTransform: CATransform3D {
+        return CATransform3DConcat(superLayer?.fianlTransform ?? CATransform3DIdentity, transform)
+    }
     
     init() {
         
@@ -43,26 +49,30 @@ class WZLayer {
     }
     
     func insert(_ sublayer: WZLayer, at index: Int) {
+        sublayer.superLayer = self
         sublayers.insert(sublayer, at: index)
     }
     
     func add(_ sublayer: WZLayer) {
+        sublayer.superLayer = self
         sublayers.append(sublayer)
     }
-    
-    static var w = 0
     
     func render(commandEncoder: MTLRenderCommandEncoder) {
         
         guard let path = path else { return }
-
-        if let fillColor = fillColor {
-            fill(path: path, fillColor: fillColor, commandEncoder: commandEncoder)
-        }
+        
+//        if let fillColor = fillColor {
+//            fill(path: path, fillColor: fillColor, commandEncoder: commandEncoder)
+//        }
     
         if let strokeColor = strokeColor, lineWidth > 0 {
             strok(path: path, lineWidth: lineWidth, strockColor: strokeColor, commandEncoder: commandEncoder)
         }
+    }
+    
+    func update(frame: Double) {
+        
     }
     
     private func fill(path: WZBezierPath, fillColor: UIColor, commandEncoder: MTLRenderCommandEncoder) {
@@ -79,22 +89,16 @@ class WZLayer {
                 guard let subSegmentPoint = subPath.calculateValue(at: percent) else { continue }
                 points.append(subSegmentPoint)
                 
-                
             }
             
             header = nextPath
         }
         
+        points = points.map({ __CGPointApplyAffineTransform($0, CATransform3DGetAffineTransform(fianlTransform)) })
+        
         let triangles = splitPolygon(vertices: points.reversed())
-        var vertices = triangles.map({ Vertex(position: (x: Float($0.x), y: Float($0.y))) })
-        
-        let minX = vertices.min(by: {$0.position.x < $1.position.x})?.position.x ?? 0
-        let minY = vertices.min(by: {$0.position.y < $1.position.y})?.position.y ?? 0
-        
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850), y: ($0.position.y - -50)))})
-//        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
-//        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
-        
+        let vertices = triangles.map({ Vertex(position: (x: Float($0.x), y: Float($0.y))) })
+ 
         let ptr = verticesBuffer.contents().bindMemory(to: Vertex.self, capacity: vertices.count)
         ptr.assign(from: vertices, count: vertices.count)
         
@@ -205,39 +209,28 @@ class WZLayer {
         
         var header = path.headSubPath
         
-        var w = lineWidth
-        
         while let subPath = header, let nextPath = subPath.nextSubPath {
             
             for i in 0...nextPath.subdivisionSegmentsCount {
                 
                 let percent = CGFloat(i) / CGFloat(nextPath.subdivisionSegmentsCount)
-//                if [2,3,4,5,6,7,8,9].contains(i) {
-//
-//                    WZLayer.w = (WZLayer.w + 1) % 140
-//                    w = 0
-//                } else {
-//                    w = lineWidth
-//                }
                 
-                guard let subSegmentPoint = subPath.calculateValue(at: percent), let normal = subPath.calculateNormal(at: percent) else { continue }
+                guard var subSegmentPoint = subPath.calculateValue(at: percent), let normal = subPath.calculateNormal(at: percent) else { continue }
                 
-                let offsetForLineWidth1 = CGVector(dx: normal.dx * -(w / 2), dy: normal.dy * -(w / 2))
+                subSegmentPoint = __CGPointApplyAffineTransform(subSegmentPoint, CATransform3DGetAffineTransform(fianlTransform))
+
+                let offsetForLineWidth1 = CGVector(dx: normal.dx * -(lineWidth / 2), dy: normal.dy * -(lineWidth / 2))
                 vertices.append(Vertex(position: (Float(subSegmentPoint.x + offsetForLineWidth1.dx), y: Float(subSegmentPoint.y + offsetForLineWidth1.dy))))
                 
-                let offsetForLineWidth2 = CGVector(dx: normal.dx * (w / 2), dy: normal.dy * (w / 2))
+                let offsetForLineWidth2 = CGVector(dx: normal.dx * (lineWidth / 2), dy: normal.dy * (lineWidth / 2))
                 vertices.append(Vertex(position: (Float(subSegmentPoint.x + offsetForLineWidth2.dx), y: Float(subSegmentPoint.y + offsetForLineWidth2.dy))))
             }
             
             header = nextPath
         }
         
-        let minX = vertices.min(by: {$0.position.x < $1.position.x})?.position.x ?? 0
-        let minY = vertices.min(by: {$0.position.y < $1.position.y})?.position.y ?? 0
-        
-        vertices = vertices.map({ Vertex(position: (x: ($0.position.x - -850), y: ($0.position.y - -50)))})
 
-        var projectionMatrix = matrix_float4x4.ortho(left: 0, right: Float(WZRenderer.shared.renderSize.width), bottom: Float(WZRenderer.shared.renderSize.height), top: 0, nearZ: -1, farZ: 1)
+        let projectionMatrix = matrix_float4x4.ortho(left: 0, right: Float(WZRenderer.shared.renderSize.width), bottom: Float(WZRenderer.shared.renderSize.height), top: 0, nearZ: -1, farZ: 1)
 
         var vs: [float4] = []
         
@@ -246,8 +239,6 @@ class WZLayer {
             let a = projectionMatrix * float4(v.position.x, v.position.y, 0, 1)
             vs.append(a)
         }
-//        vertices = vertices.map({ Vertex(position: (x: ($0.position.x * 2 - 1) / 2, y: ($0.position.y * 2 - 1) / 2))})
-//        vertices = vertices.map({ Vertex(position: (x: $0.position.x, y: -$0.position.y))})
         
         //        let vertex: [Vertex] = [Vertex(position: (-0.5, 0.5)),
         //                                Vertex(position: (0.5, 0.5)),
@@ -267,14 +258,14 @@ class WZLayer {
             indices.append(start)
             indices.append(start + 1)
             
-//            indices.append(start)
+            indices.append(start)
             indices.append((start + 2) % UInt16(vertices.count))
             
             indices.append(start + 1)
             indices.append((start + 2) % UInt16(vertices.count))
             
             indices.append((start + 3) % UInt16(vertices.count))
-//            indices.append(start + 1)
+            indices.append(start + 1)
             
             start += 2
         }
@@ -297,6 +288,11 @@ class WZLayer {
         commandEncoder.setVertexBuffer(verticesBuffer, offset: 0, index: 0)
         commandEncoder.setVertexBuffer(projectionMatrixBuffer, offset: 0, index: 1)
         commandEncoder.setFragmentBuffer(colorBuffer, offset: 0, index: 0)
-        commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: vertexIndiceBuffer, indexBufferOffset: 0)
+        
+        commandEncoder.drawIndexedPrimitives(type: .lineStrip, indexCount: WZLayer.c, indexType: .uint16, indexBuffer: vertexIndiceBuffer, indexBufferOffset: 0)
+        
+        WZLayer.c = (WZLayer.c + 1) % indices.count
     }
+    
+    static var c = 0
 }

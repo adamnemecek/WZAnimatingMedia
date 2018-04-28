@@ -25,8 +25,11 @@ class WZRenderer: NSObject {
     private(set) var device: MTLDevice
     private var commandQueue: MTLCommandQueue
     private var library: MTLLibrary
+    private var startTime: TimeInterval?
     var renderData: WZCompositionRenderData!
     var renderSize: CGSize = .zero
+    var frameCount = 0.0
+    var duration: TimeInterval = 0
     
     private override init() {
         
@@ -66,11 +69,23 @@ extension WZRenderer: MTKViewDelegate {
     
     func draw(in view: MTKView) {
         
-        for layer in renderData.childLayers {
-            
-            layer.renderGroup.rootNode?.update(frame: 0)
+        var percent: Double = 0
         
+        if let startTime = startTime {
+            
+            percent = (CACurrentMediaTime() - startTime) / duration
+            
+            if percent >= 1 {
+                percent = 1
+                self.startTime = nil
+            }
+            
+        } else {
+            startTime = CACurrentMediaTime()
+            percent = 0
         }
+        
+        renderData.update(frame: percent * frameCount)
         
         guard let commandBuffer = commandQueue.makeCommandBuffer() else {
             print("create commandBuffer error")
@@ -83,7 +98,9 @@ extension WZRenderer: MTKViewDelegate {
             return
         }
         
-        renderLayer(layer: renderData.wrapperLayer, commandEncoder: commandEncoder)
+        for layerData in renderData.childLayers {
+            renderLayer(layer: layerData.wrapperLayer, commandEncoder: commandEncoder)
+        }
         
         commandEncoder.endEncoding()
         

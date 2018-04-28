@@ -6,22 +6,25 @@
 //  Copyright © 2018年 fanyinan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class WZCompositionRenderData: WZLayerRenderData {
+class WZCompositionRenderData {
     
     private(set) var childLayers: [WZLayerRenderData] = []
     
-    override init(layer: WZLayerData?, layerGroup: WZLayerGroupData) {
-        super.init(layer: layer, layerGroup: layerGroup)
+    init(layerGroup: WZLayerGroupData) {
         
         for layerData in layerGroup.layerDatas.reversed() {
             
-            let child = WZLayerRenderData(layer: layerData, layerGroup: layerGroup)
+            let child = WZLayerRenderData(layerData: layerData, layerGroup: layerGroup)
             
             childLayers.append(child)
-            wrapperLayer.add(child)
 
         }
+    }
+    
+    func update(frame: Double) {
+        
+        childLayers.forEach({ $0.update(frame: frame) })
     }
 }

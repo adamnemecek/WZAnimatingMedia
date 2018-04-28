@@ -32,21 +32,21 @@ class WZKeyframeGroup {
 
             var previousFrame: JSON?
 
-            for keyframe in array {
+            for keyframeJSON in array {
                 
                 var currentFrame: JSON = [:]
                 
-                currentFrame["t"] = keyframe["t"]
+                currentFrame["t"] = keyframeJSON["t"]
                 
-                if keyframe["s"].exists() {
-                    currentFrame["s"] = keyframe["s"]
+                if keyframeJSON["s"].exists() {
+                    currentFrame["s"] = keyframeJSON["s"]
                 } else if let previousFrame = previousFrame, previousFrame["e"].exists() {
                     currentFrame["s"] = previousFrame["e"]
                 }
                 
-                currentFrame["o"] = keyframe["o"]
-                currentFrame["to"] = keyframe["to"]
-                currentFrame["h"] = keyframe["h"]
+                currentFrame["o"] = keyframeJSON["o"]
+                currentFrame["to"] = keyframeJSON["to"]
+                currentFrame["h"] = keyframeJSON["h"]
                 
                 if let previousFrame = previousFrame {
                     currentFrame["i"] = previousFrame["i"]
@@ -55,7 +55,7 @@ class WZKeyframeGroup {
                 
                 let keyframe = WZKeyframe(tangentJSON: currentFrame)
                 keyframes.append(keyframe)
-                previousFrame = currentFrame
+                previousFrame = keyframeJSON
             }
         } else {
             

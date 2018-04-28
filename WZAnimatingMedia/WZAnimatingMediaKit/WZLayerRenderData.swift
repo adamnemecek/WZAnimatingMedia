@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WZLayerRenderData: WZLayer {
+class WZLayerRenderData {
     
     private(set) var wrapperLayer = WZLayer()
     private var layerName = ""
@@ -19,11 +19,7 @@ class WZLayerRenderData: WZLayer {
     private var opacityInterpolator: WZNumberInterpolator!
     private(set) var renderGroup: WZRenderGroup!
     
-    init(layer: WZLayerData?, layerGroup: WZLayerGroupData) {
-        super.init()
-        
-        add(wrapperLayer)
-        guard let layerData = layer else { return }
+    init(layerData: WZLayerData, layerGroup: WZLayerGroupData) {
         
         layerName = layerData.name
         inFrame = layerData.inFrame
@@ -40,6 +36,11 @@ class WZLayerRenderData: WZLayer {
         if layerData.type == .shape && !layerData.shapes.isEmpty {
             buildContent(shapes: layerData.shapes)
         }
+    }
+    
+    func update(frame: Double) {
+        wrapperLayer.transform = transformInterpolator.transform(at: frame)
+        renderGroup.update(frame: frame)
     }
     
     private func buildContent(shapes: [WZShapeData]) {

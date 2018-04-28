@@ -10,16 +10,16 @@ import SwiftyJSON
 
 class WZKeyframe {
     
-    private var time = 0
-    private var isHold = true
+    private(set) var time = 0
+    private(set) var isHold = true
     
     //表示对progress进行曲线处理
     private var inTangent: CGPoint = .zero
     private var outTangent: CGPoint = .zero
     
     //表示对值本身进行曲线处理
-    private var spatialOutTangent: CGPoint = .zero
-    private var spatialInTangent: CGPoint = .zero
+    private(set) var spatialOutTangent: CGPoint = .zero
+    private(set) var spatialInTangent: CGPoint = .zero
     
     var floatValue: CGFloat = 0
     var pointValue: CGPoint = .zero
@@ -74,14 +74,14 @@ class WZKeyframe {
                 floatValue = CGFloat(arrayValue[0].floatValue)
             }
             
-            if arrayValue.count == 2 {
+            if arrayValue.count >= 2 {
                 
                 pointValue = pointFrameValueArray(values: arrayValue)
                 sizeValue = sizeFrameValueArray(values: arrayValue)
 
             }
             
-            if arrayValue.count == 4 {
+            if arrayValue.count >= 4 {
                 
                 var colorComponents = arrayValue.map({ CGFloat($0.floatValue) })
                 if colorComponents.max()! > 1 {

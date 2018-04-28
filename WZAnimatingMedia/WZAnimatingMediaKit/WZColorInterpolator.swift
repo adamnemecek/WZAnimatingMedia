@@ -10,7 +10,7 @@ import UIKit
 
 class WZColorInterpolator: WZValueInterpolator {
     
-    func color(at frame: Int) -> UIColor {
+    func color(at frame: Double) -> UIColor {
         return keyframes.first!.colorValue
     }
 }

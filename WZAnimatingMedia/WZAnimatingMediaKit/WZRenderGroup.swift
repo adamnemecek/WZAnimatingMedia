@@ -57,7 +57,7 @@ class WZRenderGroup: WZRenderNode {
         rootNode = previousNode
     }
     
-    override func update(frame: Int) {
+    override func update(frame: Double) {
         
         rootNode?.update(frame: frame)
     }

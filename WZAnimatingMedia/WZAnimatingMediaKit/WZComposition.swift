@@ -12,11 +12,12 @@ import SwiftyJSON
 class WZComposition {
     
     private(set) var bounds: CGRect!
-    private var startFrame = 0
-    private var endFrame = 0
-    private var frameRate = 0
-    private var timeDuration: TimeInterval = 0
+    private(set) var startFrame = 0
+    private(set) var endFrame = 0
+    private(set) var frameRate = 0
+    private(set) var timeDuration: TimeInterval = 0
     private(set) var layerGroup: WZLayerGroupData!
+    private(set) var frameCount = 0
     
     init(json: JSON) {
         parseJSON(json)
@@ -32,14 +33,14 @@ class WZComposition {
         let height = json["h"].intValue
         let width = json["w"].intValue
         bounds = CGRect(x: 0, y: 0, width: width, height: height)
-        WZRenderer.shared.renderSize = bounds.size
         
         startFrame = json["ip"].intValue
         endFrame = json["op"].intValue
         frameRate = json["fr"].intValue
+        frameCount = endFrame - startFrame - 1
         
         if frameRate != 0 {
-            timeDuration = TimeInterval((endFrame - startFrame - 1) / frameRate)
+            timeDuration = TimeInterval(frameCount) / TimeInterval(frameRate)
         }
         
         layerGroup = WZLayerGroupData(layersJSON: json["layers"].arrayValue)

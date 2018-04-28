@@ -6,7 +6,7 @@
 //  Copyright © 2018年 fanyinan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class WZTransformInterpolator {
     
@@ -24,5 +24,13 @@ class WZTransformInterpolator {
         scaleInterpolator = WZSizeInterpolator(keyframes: scale)
         rotationInterpolator = WZNumberInterpolator(keyframes: rotation)
         
+    }
+    
+    func transform(at frame: Double) -> CATransform3D {
+        
+        let position = positionInterpolator.pointValue(at: frame)
+        var transform = CATransform3DTranslate(CATransform3DIdentity, position.x, position.y, 0)
+        
+        return transform
     }
 }

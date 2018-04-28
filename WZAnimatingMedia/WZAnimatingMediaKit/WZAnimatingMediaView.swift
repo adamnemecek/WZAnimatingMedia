@@ -42,6 +42,11 @@ class WZAnimatingMediaView: UIView {
         self.mtkView = MTKView(frame: mtkViewFrame, device: WZRenderer.shared.device)
         self.mtkView.delegate = WZRenderer.shared
         self.mtkView.isPaused = false
+        self.mtkView.preferredFramesPerSecond = composition.frameRate
+        
+        WZRenderer.shared.renderSize = composition.bounds.size
+        WZRenderer.shared.duration = composition.timeDuration
+        WZRenderer.shared.frameCount = Double(composition.frameCount)
         super.init(frame: frame)
         
         addSubview(mtkView)
@@ -54,7 +59,7 @@ class WZAnimatingMediaView: UIView {
     
     private func setupRenderData() {
         
-        let renderData = WZCompositionRenderData(layer: nil, layerGroup: composition.layerGroup)
+        let renderData = WZCompositionRenderData(layerGroup: composition.layerGroup)
         WZRenderer.shared.renderData = renderData
     }
 }

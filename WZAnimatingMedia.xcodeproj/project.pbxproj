@@ -17,6 +17,8 @@
 		CFA303E12089CCD700BBAA29 /* t3.json in Resources */ = {isa = PBXBuildFile; fileRef = CFA303E02089CCD700BBAA29 /* t3.json */; };
 		CFA303E32089D1A800BBAA29 /* WZLayerGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA303E22089D1A800BBAA29 /* WZLayerGroupData.swift */; };
 		CFA303E92089DC5B00BBAA29 /* WZMathTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA303E82089DC5B00BBAA29 /* WZMathTool.swift */; };
+		CFC2D46A2094775700B71987 /* t1.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D4692094775700B71987 /* t1.json */; };
+		CFC2D46C2094789E00B71987 /* syncing.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC2D46B2094789E00B71987 /* syncing.json */; };
 		CFDB574A20875100001F1715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB574920875100001F1715 /* AppDelegate.swift */; };
 		CFDB574C20875100001F1715 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDB574B20875100001F1715 /* ViewController.swift */; };
 		CFDB574F20875100001F1715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFDB574D20875100001F1715 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		CFA303E02089CCD700BBAA29 /* t3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t3.json; sourceTree = "<group>"; };
 		CFA303E22089D1A800BBAA29 /* WZLayerGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZLayerGroupData.swift; sourceTree = "<group>"; };
 		CFA303E82089DC5B00BBAA29 /* WZMathTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WZMathTool.swift; sourceTree = "<group>"; };
+		CFC2D4692094775700B71987 /* t1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = t1.json; sourceTree = "<group>"; };
+		CFC2D46B2094789E00B71987 /* syncing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = syncing.json; sourceTree = "<group>"; };
 		CFDB574620875100001F1715 /* WZAnimatingMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WZAnimatingMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDB574920875100001F1715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFDB574B20875100001F1715 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				CFDB575B20875125001F1715 /* WZAnimatingMediaKit */,
 				CFDB574920875100001F1715 /* AppDelegate.swift */,
 				CFDB574B20875100001F1715 /* ViewController.swift */,
+				CFC2D46B2094789E00B71987 /* syncing.json */,
+				CFC2D4692094775700B71987 /* t1.json */,
 				CFA303E02089CCD700BBAA29 /* t3.json */,
 				CFDB575E20875894001F1715 /* test.json */,
 				CFDB574D20875100001F1715 /* Main.storyboard */,
@@ -283,6 +289,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFC2D46A2094775700B71987 /* t1.json in Resources */,
+				CFC2D46C2094789E00B71987 /* syncing.json in Resources */,
 				CFDB575420875101001F1715 /* LaunchScreen.storyboard in Resources */,
 				CFDB575F20875894001F1715 /* test.json in Resources */,
 				CFDB575120875101001F1715 /* Assets.xcassets in Resources */,
